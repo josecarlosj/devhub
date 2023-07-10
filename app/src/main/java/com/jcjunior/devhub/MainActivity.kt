@@ -18,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -48,11 +49,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun DeveloperInfoScreen() {
+    val boxHeight = remember {
+        120.dp
+    }
+
     Box (modifier = Modifier.fillMaxSize()){
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(120.dp),
+                .height(boxHeight),
             shape = RoundedCornerShape(
                 bottomEndPercent = 25,
                 bottomStartPercent = 25
@@ -62,14 +67,14 @@ fun DeveloperInfoScreen() {
 
         Column(
             modifier = Modifier
-                .padding(top = 60.dp)
+                .padding(top = boxHeight/2)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Image(
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(boxHeight)
                     .clip(CircleShape),
                 painter = painterResource(id = R.drawable.avatar_sample),
                 contentDescription = null,
